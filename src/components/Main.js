@@ -1,31 +1,64 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addTodoAction } from "./../actions/todoAction";
+import { addAction } from "./../actions/todoAction";
+import "./Main.css";
+import Text from "./Text";
 
+let timeoutId;
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      bg: ""
     };
   }
 
-  handleChange(e) {
-    this.props.dispatch(addTodoAction(this.state.value));
+  styleColor(node) {
     this.setState({
-      value: e.target.value
+      bg: node
     });
   }
+
+  handleChange() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(
+      () => this.props.dispatch(addAction(this._text.value)),
+      1000
+    );
+  }
   render() {
+    console.log(this.props.todo);
     return (
-      <div>
-        <label>insert text : </label>
-        <input
-          onChange={this.handleChange.bind(this)}
-          value={this.state.value}
-        />
-        <h3>{this.state.value}</h3>
+      <div className="row col-md-12">
+        <div className="col-md-2 main-div">
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            ref={input => (this._text = input)}
+            onChange={this.handleChange.bind(this)}
+            placeholder="insert text..."
+          />
+          <br />
+          <p>
+            <label>Background</label>
+          </p>
+          {this.props.todo.warna.map((node, key) => (
+            <div
+              key={key}
+              style={{
+                width: "30px",
+                height: "30px",
+                backgroundColor: node,
+                float: "left",
+                margin: "2px"
+              }}
+              onClick={this.styleColor.bind(this, node)}
+            />
+          ))}
+        </div>
+        <Text bg={this.state.bg} />
       </div>
     );
   }

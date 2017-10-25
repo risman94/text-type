@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100% !important;
+}
+
+.row {
+  height: 100% !important;
+  position: absolute;
+}
+
+.main-div {
+  background: black;
+  color: rgb(152, 152, 197);
+  height: 100% !important;
+}

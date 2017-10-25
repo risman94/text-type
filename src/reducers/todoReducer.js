@@ -1,14 +1,19 @@
-import { VALUE } from "./../actions/constants";
+import { VALUE, COLOR } from "./../actions/constants";
 
-const addTodo = (state = [], action) => {
+const initialState = {
+  text: "",
+  warna: ["red", "blue", "yellow", "grey", "green", "white", "pink"]
+};
+
+const addTodo = (state = initialState, action) => {
   switch (action.type) {
     case VALUE:
-      return [
+      return {
         ...state,
-        {
-          text: action.text
-        }
-      ];
+        text: action.text
+      };
+    case COLOR:
+      return [...state, { warna: action.warna }];
     default:
       return state;
   }
