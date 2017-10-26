@@ -14,7 +14,12 @@ class Text extends React.Component {
       >
         <div
           className="text-center text"
-          style={{ color: this.props.color, fontSize: this.props.size }}
+          style={{
+            color: this.props.color,
+            fontSize: this.props.size,
+            fontWeight: this.props.bold,
+            fontFamily: this.props.font
+          }}
         >
           {this.props.todo.text}
         </div>

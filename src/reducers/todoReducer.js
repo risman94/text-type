@@ -1,4 +1,10 @@
-import { VALUE, COLOR, ADDSIZE } from "./../actions/constants";
+import {
+  VALUE,
+  COLOR,
+  ADDSIZE,
+  ADDBOLD,
+  ADDFONT
+} from "./../actions/constants";
 
 const initialState = {
   text: "",
@@ -20,7 +26,9 @@ const initialState = {
     "#AAAAAA",
     "#DDDDDD"
   ],
-  size: ["18", "22", "26", "40", "64", "72", "96", "144"]
+  size: ["18", "22", "26", "40", "64", "72", "96", "144"],
+  bold: ["400", "700"],
+  font: ["sans-serif", "serif", "monospace"]
 };
 
 const addTodo = (state = initialState, action) => {
@@ -34,6 +42,8 @@ const addTodo = (state = initialState, action) => {
       return [...state, { warna: action.warna }];
     case ADDSIZE:
       return [...state, { size: action.size }];
+    case ADDBOLD:
+      return [...state, { bold: action.bold }];
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { VALUE, COLOR, ADDSIZE } from "./constants";
+import { VALUE, COLOR, ADDSIZE, ADDBOLD, ADDFONT } from "./constants";
 
 export const addAction = text => ({
   type: VALUE,
@@ -12,4 +12,14 @@ export const colorAction = warna => ({
 export const sizeAction = size => ({
   type: ADDSIZE,
   size
+});
+
+export const boldAction = bold => ({
+  type: ADDBOLD,
+  bold
+});
+
+export const fontAction = font => ({
+  type: ADDFONT,
+  font
 });

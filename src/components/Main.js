@@ -12,8 +12,18 @@ class Main extends React.Component {
     this.state = {
       bg: "",
       color: "",
-      size: ""
+      size: "",
+      bold: "",
+      font: ""
     };
+  }
+
+  styleFont(e) {
+    this.setState({ font: e.target.value });
+  }
+
+  styleBold(e) {
+    this.setState({ bold: e.target.value });
   }
 
   styleSize(e) {
@@ -55,7 +65,7 @@ class Main extends React.Component {
             placeholder="insert text..."
           />
           <br />
-          <p style={{ marginBottom: 0 }}>
+          <p style={{ marginBottom: 0, float: "left", paddingRight: "5px" }}>
             <label>size</label>
           </p>
           <select onChange={this.styleSize.bind(this)}>
@@ -65,6 +75,26 @@ class Main extends React.Component {
               </option>
             ))}
           </select>
+          <div style={{ float: "right" }}>
+            <label style={{ paddingRight: "5px" }}>Bold</label>
+            <select onChange={this.styleBold.bind(this)}>
+              {this.props.todo.bold.map((node, index) => (
+                <option key={index} value={node}>
+                  {node}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div style={{ float: "left" }}>
+            <label style={{ paddingRight: "5px" }}>font</label>
+            <select onChange={this.styleFont.bind(this)}>
+              {this.props.todo.font.map((node, index) => (
+                <option key={index} value={node}>
+                  {node}
+                </option>
+              ))}
+            </select>
+          </div>
           <br />
           <p style={{ marginTop: 30, marginBottom: 0 }}>
             <label>Background</label>
@@ -103,6 +133,8 @@ class Main extends React.Component {
           color={this.state.color}
           size={this.state.size}
           bg={this.state.bg}
+          bold={this.state.bold}
+          font={this.state.font}
         />
       </div>
     );
