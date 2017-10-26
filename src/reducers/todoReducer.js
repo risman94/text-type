@@ -1,8 +1,26 @@
-import { VALUE, COLOR } from "./../actions/constants";
+import { VALUE, COLOR, ADDSIZE } from "./../actions/constants";
 
 const initialState = {
   text: "",
-  warna: ["red", "blue", "yellow", "grey", "green", "white", "pink"]
+  warna: [
+    "#001f3f",
+    "#0074D9",
+    "#7FDBFF",
+    "#39CCCC",
+    "#3D9970",
+    "#2ECC40",
+    "#01FF70",
+    "#FFDC00",
+    "#FF851B",
+    "#FF4136",
+    "#85144b",
+    "#F012BE",
+    "#B10DC9",
+    "#111111",
+    "#AAAAAA",
+    "#DDDDDD"
+  ],
+  size: ["18", "22", "26", "40", "64", "72", "96", "144"]
 };
 
 const addTodo = (state = initialState, action) => {
@@ -14,6 +32,8 @@ const addTodo = (state = initialState, action) => {
       };
     case COLOR:
       return [...state, { warna: action.warna }];
+    case ADDSIZE:
+      return [...state, { size: action.size }];
     default:
       return state;
   }

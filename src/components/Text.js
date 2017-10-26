@@ -8,8 +8,16 @@ class Text extends React.Component {
   render() {
     console.log(this.props.bg);
     return (
-      <div className="col-md-10" style={{ background: this.props.bg }}>
-        <h1 className="text-center text">{this.props.todo.text}</h1>
+      <div
+        className="col-md-10"
+        style={{ background: this.props.bg, height: "100%" }}
+      >
+        <div
+          className="text-center text"
+          style={{ color: this.props.color, fontSize: this.props.size }}
+        >
+          {this.props.todo.text}
+        </div>
       </div>
     );
   }

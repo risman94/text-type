@@ -10,13 +10,27 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bg: ""
+      bg: "",
+      color: "",
+      size: ""
     };
+  }
+
+  styleSize(e) {
+    this.setState({
+      size: e.target.value
+    });
+  }
+
+  styleBg(node) {
+    this.setState({
+      bg: node
+    });
   }
 
   styleColor(node) {
     this.setState({
-      bg: node
+      color: node
     });
   }
 
@@ -41,8 +55,35 @@ class Main extends React.Component {
             placeholder="insert text..."
           />
           <br />
-          <p>
+          <p style={{ marginBottom: 0 }}>
+            <label>size</label>
+          </p>
+          <select onChange={this.styleSize.bind(this)}>
+            {this.props.todo.size.map((node, index) => (
+              <option key={index} value={node}>
+                {node}
+              </option>
+            ))}
+          </select>
+          <br />
+          <p style={{ marginTop: 30, marginBottom: 0 }}>
             <label>Background</label>
+          </p>
+          {this.props.todo.warna.map((node, key) => (
+            <div
+              key={key}
+              style={{
+                width: "30px",
+                height: "30px",
+                backgroundColor: node,
+                float: "left",
+                margin: "2px"
+              }}
+              onClick={this.styleBg.bind(this, node)}
+            />
+          ))}
+          <p style={{ marginTop: "150px", marginBottom: 0 }}>
+            <label>Color</label>
           </p>
           {this.props.todo.warna.map((node, key) => (
             <div
@@ -58,7 +99,11 @@ class Main extends React.Component {
             />
           ))}
         </div>
-        <Text bg={this.state.bg} />
+        <Text
+          color={this.state.color}
+          size={this.state.size}
+          bg={this.state.bg}
+        />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import { VALUE, COLOR } from "./constants";
+import { VALUE, COLOR, ADDSIZE } from "./constants";
 
 export const addAction = text => ({
   type: VALUE,
@@ -7,4 +7,9 @@ export const addAction = text => ({
 export const colorAction = warna => ({
   type: COLOR,
   warna
+});
+
+export const sizeAction = size => ({
+  type: ADDSIZE,
+  size
 });
